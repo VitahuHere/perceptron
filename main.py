@@ -6,16 +6,25 @@ def modify_weight_vector(
     input_vector: list[float],
 ) -> list:
     multiplier = alpha * (d - y)
-    v_prim = [a * multiplier for a in input_vector]
-    return [x + y for x, y in zip(weight_vector, v_prim)]
+    new_input = [a * multiplier for a in input_vector]
+    return [x + y for x, y in zip(weight_vector, new_input)]
+
+
+def modify_theta(old_theta: float, alpha: float, d: float, y: float) -> float:
+    return old_theta - alpha * (d - y)
 
 
 def main():
     alpha = 0.5
     theta = 3
 
+    w = [2, -1, 4, 1]
     x = [7, -2, -5, 4]
     d = 1
+    y = 0
+
+    print(modify_theta(theta, alpha, d, y))
+    print(modify_weight_vector(w, alpha, d, y, x))
 
 
 if __name__ == "__main__":
