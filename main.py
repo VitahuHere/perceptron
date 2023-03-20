@@ -1,3 +1,12 @@
+import csv
+
+
+def parse_data(path: str) -> list:
+    with open(path, encoding="utf-8") as f:
+        data = csv.reader(f, delimeter=",")
+        print(data)
+
+
 def modify_weight_vector(
     weight_vector: list[float],
     alpha: float,
@@ -23,8 +32,9 @@ def main():
     d = 1
     y = 0
 
-    print(modify_theta(theta, alpha, d, y))
-    print(modify_weight_vector(w, alpha, d, y, x))
+    # print(modify_theta(theta, alpha, d, y))
+    # print(modify_weight_vector(w, alpha, d, y, x))
+    print(parse_data("perceptron.data"))
 
 
 if __name__ == "__main__":
